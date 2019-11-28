@@ -9,7 +9,7 @@ First, cd into the directory with your lambda. It should look something like
 ```bash
 $ cd lambdas/my-lambda ; ls
 
-main.go         main.zip        template.yml
+main.go         template.yml
 
 $ GOOS=linux go build main.go && zip ./main.zip ./main
 
