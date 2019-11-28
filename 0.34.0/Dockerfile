@@ -15,5 +15,4 @@ RUN wget --quiet https://files.pythonhosted.org/packages/2c/4f/cda33dc06da70c6db
 WORKDIR ./aws-sam-cli-0.34.0
 RUN pip3 install --ignore-installed .
 
-WORKDIR /app
 ENTRYPOINT ["sam"]

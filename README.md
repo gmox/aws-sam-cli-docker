@@ -20,10 +20,10 @@ Then you'll compile your lambda.
 $ GOOS=linux go build main.go && zip ./main.zip ./main
 ```
 
-And last, run the AWS SAM CLI docker image.
+You run the AWS SAM CLI docker image like so
 
 ```bash
-$ docker run -v /var/run/docker.sock:/var/run/docker.sock -v $(PWD):/app aws-sam-cli-docker:0.34.0 local start-api --host=0.0.0.0
+$ docker run -v /var/run/docker.sock:/var/run/docker.sock -v aws-sam-cli-docker:0.34.0 local start-api --host=0.0.0.0
 ```
 
 # Is it production ready?
