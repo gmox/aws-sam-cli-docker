@@ -24,8 +24,8 @@ And finally, run the AWS SAM CLI docker image. In this example, it starts up a l
 via SAM.
 
 ```bash
-$ docker run -v $(PWD):$(PWD) -w $(PWD) aws-sam-cli-docker:0.34.0 local start-api --host=0.0.0.0
+$ docker run -v $(PWD):/$(PWD) -w $(PWD) aws-sam-cli-docker:0.34.0 local start-api --host=0.0.0.0
 ```
 
-`$(PWD):$(PWD)` tells Docker to add our current working directory -- the directory with the lambda in it -- to the container.
-This is what allows SAM to utilize the lambda. `-w $(PWD)` sets the current working directory to the directory we just added.
+`$(PWD):$(PWD)` tells Docker to add our current working directory (the directory with the lambda in it) to the container at `/$(PWD)`.
+This path can be changed by the user. This is what allows SAM to utilize the lambda. `-w ($PWD)` sets the current working directory to the directory that was added to the container

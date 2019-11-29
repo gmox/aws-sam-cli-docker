@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 ENV API_PORT=3000
-EXPOSE ${API_PORT}/tcp
+EXPOSE ${API_PORT}:${API_PORT}
 
 RUN apk -v --update add \
         python3 \
@@ -18,5 +18,6 @@ RUN wget https://files.pythonhosted.org/packages/2c/4f/cda33dc06da70c6db23aee18a
     pip3 install --ignore-installed .
 
 VOLUME /var/run/docker.sock:/var/run/docker.sock
-
+# Allows us to run docker inside of docker
+VOLUME ["/var/run/docker.sock"]
 ENTRYPOINT ["sam"]
