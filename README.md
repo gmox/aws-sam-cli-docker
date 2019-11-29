@@ -14,18 +14,18 @@ $ cd lambdas/my-lambda ; ls
 main.go         template.yml
 ```
 
-Then you'll compile your lambda.
+Then you'll build your lambda.
 
 ```bash
 $ GOOS=linux go build main.go && zip ./main.zip ./main
 ```
 
-You run the AWS SAM CLI docker image like so
+And finally, run the AWS SAM CLI docker image. In this example, it starts up a local API
+via SAM.
 
 ```bash
-$ docker run -v /var/run/docker.sock:/var/run/docker.sock -v aws-sam-cli-docker:0.34.0 local start-api --host=0.0.0.0
+$ docker run -v $(PWD):$(PWD) -w $(PWD) aws-sam-cli-docker:0.34.0 local start-api --host=0.0.0.0
 ```
 
-# Is it production ready?
-
-Heavens no. Not yet, anyway. But it works. And I can iterate more on it.
+`$(PWD):$(PWD)` tells Docker to add our current working directory -- the directory with the lambda in it -- to the container.
+This is what allows SAM to utilize the lambda. `-w $(PWD)` sets the current working directory to the directory we just added.
